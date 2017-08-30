@@ -12,14 +12,24 @@ var ClozeCard = function(text, cloze) {
     this.fullText = text;
     this.cloze = cloze;
     this.partial = text.replace(cloze, '...');
-    this.printCards = function() {
-        console.log(this.partial);
+    this.brokenClozeSearch = function() {
+        var search = fullText.match(this.cloze);
+        if (search === null) {
+            console.log('that didn\'t work, silly!!');
+        };
+        brokenClozeSearch();
     }
+
 }
 
-ClozeCard.prototype.printCards = function() {
-    
-}
+var firstPresidentCloze = new ClozeCard('George Washington was the first president of the United States.', 'George Washington');
 
-var firstQuestion = new ClozeCard()
+var brokenCloze = new ClozeCard('This doesn\'t work', 'oops');
+
+console.log("\n\nCloze: "+ firstPresidentCloze.cloze);
+console.log("\n\nPartial: "+ firstPresidentCloze.partial);
+console.log("\n\nfullText: "+ firstPresidentCloze.fullText);
+
+console.log(brokenCloze.partial);
+
 module.exports = ClozeCard;
