@@ -9,27 +9,32 @@
 // Use prototypes to attach these methods, wherever possible.
 
 var ClozeCard = function(text, cloze) {
+    if(!text.includes(cloze)) {
+        console.log('This is not a cloze!!!');
+        return
+    }
     this.fullText = text;
     this.cloze = cloze;
     this.partial = text.replace(cloze, '...');
-    this.brokenClozeSearch = function() {
-        var search = fullText.match(this.cloze);
-        if (search === null) {
-            console.log('that didn\'t work, silly!!');
-        };
-        brokenClozeSearch();
-    }
 
-}
+    // this.ifBrokenCloze = function() {
+    //     if (!this.fullText.includes(this.cloze) === undefined) {
+
+    //             console.log('You messed up!');
+    //     }
+    //     // return this.fullText.replace(this.fullText, 'that didn\'t work, silly!!')
+    
+    // throw new Error('you screwed up')
+};
+
+
 
 var firstPresidentCloze = new ClozeCard('George Washington was the first president of the United States.', 'George Washington');
 
 var brokenCloze = new ClozeCard('This doesn\'t work', 'oops');
 
-console.log("\n\nCloze: "+ firstPresidentCloze.cloze);
 console.log("\n\nPartial: "+ firstPresidentCloze.partial);
+console.log("\n\nCloze: "+ firstPresidentCloze.cloze);
 console.log("\n\nfullText: "+ firstPresidentCloze.fullText);
-
-console.log(brokenCloze.partial);
 
 module.exports = ClozeCard;
